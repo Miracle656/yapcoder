@@ -1,0 +1,31 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/components/theme-provider";
+import { AppLayout } from "@/components/layout/AppLayout";
+import { Packages } from "@/pages/Packages";
+import { Projects } from "@/pages/Projects";
+import { Developers } from "@/pages/Developers";
+import { Campaigns } from "@/pages/Campaigns";
+import { CampaignDetail } from "@/pages/CampaignDetail";
+import { Dashboard } from "@/pages/Dashboard";
+import "./App.css";
+
+function App() {
+  return (
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="packages" element={<Packages />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="developers" element={<Developers />} />
+            <Route path="campaigns" element={<Campaigns />} />
+            <Route path="campaigns/:id" element={<CampaignDetail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+}
+
+export default App;
