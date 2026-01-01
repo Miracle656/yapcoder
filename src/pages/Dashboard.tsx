@@ -1,13 +1,13 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area, PieChart, Pie, Cell
 } from "recharts";
 import { dashboardStats, developerGrowthData, ecosystemDistribution, projectTreemapData, devTreemapData, activeDevsByType } from "@/data/mockData";
-import { ArrowUpRight, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+// import { ArrowUpRight, Zap } from "lucide-react";
+// import { Link } from "react-router-dom";
 import { TreemapChart } from "@/components/charts/TreemapChart";
 
 export function Dashboard() {
