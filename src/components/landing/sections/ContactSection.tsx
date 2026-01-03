@@ -84,7 +84,7 @@ export function ContactSection() {
                                     }`}
                                 style={{ transitionDelay: "500ms" }}
                             >
-                                {["Twitter", "Instagram", "LinkedIn", "Dribbble"].map((social, i) => (
+                                {["Twitter", "Instagram", "LinkedIn", "Dribbble"].map((social) => (
                                     <a
                                         key={social}
                                         href="#"

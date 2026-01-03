@@ -14,7 +14,7 @@ import {
 import { MapPin, Github, Star, GitFork } from "lucide-react";
 
 export function DeveloperProfile() {
-    const { username } = useParams();
+    useParams();
 
     // Mock data based on API response structure
     const profileData = {

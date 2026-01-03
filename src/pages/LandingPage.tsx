@@ -1,5 +1,7 @@
 
-import { Shader, ChromaFlow, Swirl } from "shaders/react"
+import { Shader, ChromaFlow as ChromaFlowOrig, Swirl as SwirlOrig } from "shaders/react"
+const ChromaFlow = ChromaFlowOrig as any
+const Swirl = SwirlOrig as any
 import { CustomCursor } from "@/components/landing/CustomCursor"
 import { GrainOverlay } from "@/components/landing/GrainOverlay"
 import { WorkSection } from "@/components/landing/sections/WorkSection"
@@ -8,8 +10,9 @@ import { AboutSection } from "@/components/landing/sections/AboutSection"
 import { ContactSection } from "@/components/landing/sections/ContactSection"
 import { MagneticButton } from "@/components/landing/MagneticButton"
 import { useRef, useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useTheme } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/layout/ThemeToggle"
 
 export function LandingPage() {
     const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -18,7 +21,7 @@ export function LandingPage() {
     const touchStartY = useRef(0)
     const touchStartX = useRef(0)
     const shaderContainerRef = useRef<HTMLDivElement>(null)
-    const scrollThrottleRef = useRef<number>()
+    const scrollThrottleRef = useRef<number | undefined>(undefined)
     const navigate = useNavigate()
 
     const { theme } = useTheme()
@@ -198,6 +201,7 @@ export function LandingPage() {
                 style={{ contain: "strict" }}
             >
                 <Shader className="h-full w-full">
+                    {/* @ts-ignore */}
                     <Swirl
                         colorA={colorA}
                         colorB={colorB}
@@ -259,6 +263,7 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
+                    <ThemeToggle />
                     <MagneticButton variant="ghost" onClick={() => navigate('/dashboard')}>
                         Login
                     </MagneticButton>

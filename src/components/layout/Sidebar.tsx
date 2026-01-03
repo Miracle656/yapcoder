@@ -28,7 +28,7 @@ export function AppSidebar() {
     const location = useLocation();
 
     return (
-        <Sidebar collapsible="icon">
+        <Sidebar collapsible="icon" className="bg-background/60 backdrop-blur-md border-r border-white/10">
             <SidebarHeader className="h-16 border-b border-sidebar-border">
                 <div className="flex h-full items-center gap-2 px-2">
                     <Link to="/" className="flex items-center gap-2">
