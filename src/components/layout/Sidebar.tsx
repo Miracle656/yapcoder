@@ -1,6 +1,6 @@
 
 import { Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, Package, FolderGit2, Users, Trophy } from "lucide-react";
+import { LayoutDashboard, Package, FolderGit2, Users, Trophy, Wrench } from "lucide-react";
 import {
     Sidebar,
     SidebarContent,
@@ -20,6 +20,7 @@ const navItems = [
     { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
     { name: "Packages", href: "/dashboard/packages", icon: Package },
     { name: "Projects", href: "/dashboard/projects", icon: FolderGit2 },
+    { name: "Tools", href: "/dashboard/tools", icon: Wrench },
     { name: "Developers", href: "/dashboard/developers", icon: Users },
     { name: "Campaigns", href: "/dashboard/campaigns", icon: Trophy },
 ];
@@ -35,7 +36,7 @@ export function AppSidebar() {
                         <img
                             src="/yapcoderlogo.png"
                             alt="YapCoder"
-                            className="h-8 w-8 rounded-lg object-contain"
+                            className="h-12 w-12 group-data-[collapsible=icon]:h-10 group-data-[collapsible=icon]:w-10 rounded-lg object-contain dark:invert-0 invert"
                         />
                         <div className="grid flex-1 text-left text-sm leading-tight">
                             <span className="truncate font-semibold">YapCoder</span>
@@ -51,7 +52,7 @@ export function AppSidebar() {
                         Platform
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu className="gap-0.5">
+                        <SidebarMenu className="gap-2 group-data-[collapsible=icon]:gap-2">
                             {navItems.map((item) => (
                                 <SidebarMenuItem key={item.name}>
                                     <SidebarMenuButton
@@ -77,10 +78,10 @@ export function AppSidebar() {
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild className="hover:bg-accent rounded-lg px-2 py-1.5 h-auto">
                             <Link to="/dashboard/developers/YapCoderUser" className="flex items-center gap-2">
-                                <Avatar className="h-8 w-8 rounded-lg">
-                                    <AvatarImage src="/yapcoderlogo.png" alt="YapCoder User" />
+                                <Avatar className="h-6 w-6 rounded-lg">
+                                    <AvatarImage src="/yapcoderlogo.png" alt="YapCoder User" className="dark:invert-0 invert" />
                                     <AvatarFallback className="rounded-lg bg-muted text-xs p-1">
-                                        <img src="/yapcoderlogo.png" alt="YC" className="h-full w-full object-contain" />
+                                        <img src="/yapcoderlogo.png" alt="YC" className="h-full w-full object-contain dark:invert-0 invert" />
                                     </AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">

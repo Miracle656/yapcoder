@@ -8,6 +8,7 @@ import { DeveloperProfile } from "@/pages/DeveloperProfile";
 import { Campaigns } from "@/pages/Campaigns";
 import { CampaignDetail } from "@/pages/CampaignDetail";
 import { Dashboard } from "@/pages/Dashboard";
+import Tools from "@/pages/Tools";
 import "./App.css";
 
 import { LandingPage } from "@/pages/LandingPage";
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="packages" element={<Packages />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="tools" element={<Tools />} />
             <Route path="developers" element={<Developers />} />
             <Route path="developers/:username" element={<DeveloperProfile />} />
             <Route path="campaigns" element={<Campaigns />} />

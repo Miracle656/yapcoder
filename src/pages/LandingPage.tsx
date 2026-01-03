@@ -239,11 +239,11 @@ export function LandingPage() {
                     onClick={() => scrollToSection(0)}
                     className="flex items-center gap-2 transition-transform hover:scale-105"
                 >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-300 hover:scale-110">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300 hover:scale-110">
                         <img
                             src="/yapcoderlogo.png"
                             alt="YapCoder"
-                            className="h-10 w-10 object-contain"
+                            className="h-12 w-12 object-contain dark:invert-0 invert"
                         />
                     </div>
                     <span className="font-sans text-xl font-semibold tracking-tight text-foreground">YapCoder</span>

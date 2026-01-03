@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Trophy, Calendar, Users, TrendingUp, Award, Target } from "lucide-react";
+import { campaignAnalytics } from "@/data/mockData";
+import { TopContributorsCard } from "@/components/analytics/TopContributorsCard";
+import { TechStackChart } from "@/components/analytics/TechStackChart";
+import { ActivityHeatmap } from "@/components/analytics/ActivityHeatmap";
+import { CampaignHealthGauges } from "@/components/analytics/CampaignHealthGauges";
+import { ProjectHealthTable } from "@/components/analytics/ProjectHealthTable";
 
 export function CampaignDetail() {
     const { id } = useParams();
@@ -84,12 +90,7 @@ export function CampaignDetail() {
         }
     ];
 
-    const analytics = [
-        { label: "Total Submissions", value: "342", change: "+12%", icon: Trophy },
-        { label: "Active Teams", value: "156", change: "+8%", icon: Users },
-        { label: "Countries", value: "45", change: "+3", icon: TrendingUp },
-        { label: "Total Views", value: "12.4k", change: "+25%", icon: Target }
-    ];
+
 
     return (
         <div className="space-y-6 min-w-0">
@@ -254,58 +255,70 @@ export function CampaignDetail() {
 
                 {/* Analytics Tab */}
                 <TabsContent value="analytics" className="space-y-6 mt-6">
+                    {/* Big Stats Cards */}
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                        {analytics.map((stat, idx) => (
-                            <Card key={idx}>
-                                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                                    <CardTitle className="text-sm font-medium">{stat.label}</CardTitle>
-                                    <stat.icon className="h-4 w-4 text-muted-foreground" />
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="text-2xl font-bold">{stat.value}</div>
-                                    <p className="text-xs text-emerald-500">{stat.change}</p>
-                                </CardContent>
-                            </Card>
-                        ))}
+                        <Card className="border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2">
+                                    <Trophy className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-xs font-medium text-muted-foreground">Total Submissions</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-3xl font-bold">{campaignAnalytics.keyMetrics.totalSubmissions.toLocaleString()}</div>
+                                <p className="text-xs text-emerald-500 mt-1">+12% from last month</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2">
+                                    <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-xs font-medium text-muted-foreground">Pull Requests</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-3xl font-bold">{campaignAnalytics.keyMetrics.pullRequests}</div>
+                                <p className="text-xs text-emerald-500 mt-1">+8% from last month</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2">
+                                    <Award className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-xs font-medium text-muted-foreground">Total Issues</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-3xl font-bold">{campaignAnalytics.keyMetrics.issues}</div>
+                                <p className="text-xs text-emerald-500 mt-1">Resolved 67%</p>
+                            </CardContent>
+                        </Card>
+                        <Card className="border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2">
+                                    <Target className="h-4 w-4 text-muted-foreground" />
+                                    <CardTitle className="text-xs font-medium text-muted-foreground">Active Projects</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="text-3xl font-bold">{campaignAnalytics.keyMetrics.activeProjects}</div>
+                                <p className="text-xs text-emerald-500 mt-1">+15% from last month</p>
+                            </CardContent>
+                        </Card>
                     </div>
 
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Submission Timeline</CardTitle>
-                            <CardDescription>Track submissions over time</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            <div className="h-[200px] flex items-center justify-center text-muted-foreground">
-                                Chart placeholder - submissions over time
-                            </div>
-                        </CardContent>
-                    </Card>
+                    {/* Top Row: Contributors, Tech Stack, Heatmap */}
+                    <div className="grid gap-4 lg:grid-cols-3">
+                        <TopContributorsCard contributors={campaignAnalytics.topContributors} />
+                        <TechStackChart techStack={campaignAnalytics.techStack} />
+                        <ActivityHeatmap data={campaignAnalytics.activityHeatmap} />
+                    </div>
 
-                    <Card>
-                        <CardHeader>
-                            <CardTitle>Top Contributors</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <div className="space-y-3">
-                                {[1, 2, 3, 4, 5].map((i) => (
-                                    <div key={i} className="flex items-center justify-between">
-                                        <div className="flex items-center gap-3">
-                                            <img
-                                                src={`https://i.pravatar.cc/150?img=${i + 40}`}
-                                                alt="Contributor"
-                                                className="h-8 w-8 rounded-full"
-                                            />
-                                            <div>
-                                                <p className="font-semibold text-sm">Contributor {i}</p>
-                                                <p className="text-xs text-muted-foreground">{10 - i} submissions</p>
-                                            </div>
-                                        </div>
-                                        <Badge variant="outline">#{i}</Badge>
-                                    </div>
-                                ))}
-                            </div>
-                        </CardContent>
-                    </Card>
+                    {/* Bottom Row: Health Gauges and Project Table */}
+                    <div className="grid gap-4 lg:grid-cols-3">
+                        <CampaignHealthGauges health={campaignAnalytics.campaignHealth} />
+                        <ProjectHealthTable projects={campaignAnalytics.projectHealth} />
+                    </div>
                 </TabsContent>
             </Tabs>
         </div>

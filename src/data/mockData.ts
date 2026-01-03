@@ -238,3 +238,433 @@ export const trendingProjects = [
     },
 ];
 
+export interface Tool {
+    id: string;
+    name: string;
+    description: string;
+    category: 'Storage' | 'Security' | 'Identity' | 'DeFi' | 'Infrastructure' | 'Developer Tools' | 'Oracle';
+    logo: string;
+    website: string;
+    github?: string;
+    docs?: string;
+    stats: {
+        projectsUsing: number;
+        weeklyDownloads?: number;
+        stars?: number;
+        totalTransactions?: number;
+    };
+    ranking: number;
+    trendingScore: number; // 0-100
+    projects: {
+        name: string;
+        category: string;
+    }[];
+    tags: string[];
+}
+
+export const suiTools: Tool[] = [
+    {
+        id: '1',
+        name: 'Walrus',
+        description: 'Decentralized storage protocol and data availability layer for Sui blockchain',
+        category: 'Storage',
+        logo: '🌊',
+        website: 'https://walrus.site',
+        github: 'https://github.com/MystenLabs/walrus',
+        docs: 'https://docs.walrus.site',
+        stats: {
+            projectsUsing: 47,
+            totalTransactions: 1250000,
+            stars: 890
+        },
+        ranking: 1,
+        trendingScore: 95,
+        projects: [
+            { name: 'SuiNS', category: 'Identity' },
+            { name: 'BlueMove', category: 'NFT' },
+            { name: 'Cetus', category: 'DeFi' },
+            { name: 'Aftermath', category: 'DeFi' }
+        ],
+        tags: ['storage', 'data-availability', 'decentralized', 'infrastructure']
+    },
+    {
+        id: '2',
+        name: 'Enoki',
+        description: 'zkLogin infrastructure and authentication layer for seamless Web3 onboarding',
+        category: 'Identity',
+        logo: '🍄',
+        website: 'https://enoki.mystenlabs.com',
+        docs: 'https://docs.enoki.mystenlabs.com',
+        stats: {
+            projectsUsing: 38,
+            totalTransactions: 850000,
+            weeklyDownloads: 12500
+        },
+        ranking: 2,
+        trendingScore: 92,
+        projects: [
+            { name: 'Navi Protocol', category: 'DeFi' },
+            { name: 'Scallop', category: 'DeFi' },
+            { name: 'Kriya', category: 'DeFi' },
+            { name: 'SuiPlay', category: 'Gaming' }
+        ],
+        tags: ['zkLogin', 'authentication', 'identity', 'web3-onboarding']
+    },
+    {
+        id: '3',
+        name: 'DeepBook',
+        description: 'Central limit order book (CLOB) protocol for decentralized trading',
+        category: 'DeFi',
+        logo: '📊',
+        website: 'https://deepbook.tech',
+        github: 'https://github.com/DeepBookTech',
+        stats: {
+            projectsUsing: 32,
+            totalTransactions: 3500000,
+            stars: 560
+        },
+        ranking: 3,
+        trendingScore: 88,
+        projects: [
+            { name: 'Cetus', category: 'DeFi' },
+            { name: 'Turbos', category: 'DeFi' },
+            { name: 'Aftermath', category: 'DeFi' },
+            { name: 'Kriya', category: 'DeFi' }
+        ],
+        tags: ['order-book', 'trading', 'liquidity', 'dex']
+    },
+    {
+        id: '4',
+        name: 'Seal',
+        description: 'Smart contract verification and security auditing tool for Move language',
+        category: 'Security',
+        logo: '🔒',
+        website: 'https://seal.security',
+        github: 'https://github.com/seal-security',
+        docs: 'https://docs.seal.security',
+        stats: {
+            projectsUsing: 28,
+            stars: 420,
+            weeklyDownloads: 3200
+        },
+        ranking: 4,
+        trendingScore: 85,
+        projects: [
+            { name: 'Navi Protocol', category: 'DeFi' },
+            { name: 'Scallop', category: 'DeFi' },
+            { name: 'Cetus', category: 'DeFi' }
+        ],
+        tags: ['security', 'auditing', 'verification', 'move']
+    },
+    {
+        id: '5',
+        name: 'Sui SDK',
+        description: 'Official JavaScript/TypeScript SDK for building on Sui blockchain',
+        category: 'Developer Tools',
+        logo: '⚙️',
+        website: 'https://sdk.mystenlabs.com',
+        github: 'https://github.com/MystenLabs/sui',
+        docs: 'https://docs.sui.io/references/ts-sdk',
+        stats: {
+            projectsUsing: 156,
+            weeklyDownloads: 45000,
+            stars: 8500
+        },
+        ranking: 5,
+        trendingScore: 98,
+        projects: [
+            { name: 'All Projects', category: 'Various' }
+        ],
+        tags: ['sdk', 'javascript', 'typescript', 'development']
+    },
+    {
+        id: '6',
+        name: 'Pyth Oracle',
+        description: 'High-fidelity, low-latency price feeds for DeFi applications',
+        category: 'Oracle',
+        logo: '🔮',
+        website: 'https://pyth.network',
+        github: 'https://github.com/pyth-network',
+        docs: 'https://docs.pyth.network',
+        stats: {
+            projectsUsing: 42,
+            totalTransactions: 2100000,
+            stars: 750
+        },
+        ranking: 6,
+        trendingScore: 87,
+        projects: [
+            { name: 'Navi Protocol', category: 'DeFi' },
+            { name: 'Scallop', category: 'DeFi' },
+            { name: 'Cetus', category: 'DeFi' },
+            { name: 'Aftermath', category: 'DeFi' }
+        ],
+        tags: ['oracle', 'price-feeds', 'defi', 'data']
+    },
+    {
+        id: '7',
+        name: 'Sui CLI',
+        description: 'Command-line interface for interacting with Sui blockchain and Move development',
+        category: 'Developer Tools',
+        logo: '💻',
+        website: 'https://sui.io',
+        github: 'https://github.com/MystenLabs/sui',
+        docs: 'https://docs.sui.io/references/cli',
+        stats: {
+            projectsUsing: 200,
+            weeklyDownloads: 25000,
+            stars: 8500
+        },
+        ranking: 7,
+        trendingScore: 94,
+        projects: [
+            { name: 'All Projects', category: 'Various' }
+        ],
+        tags: ['cli', 'development', 'move', 'tooling']
+    },
+    {
+        id: '8',
+        name: 'Move Analyzer',
+        description: 'Static analysis and linting tool for Move smart contracts',
+        category: 'Developer Tools',
+        logo: '🔍',
+        website: 'https://move-analyzer.dev',
+        github: 'https://github.com/move-language/move-analyzer',
+        docs: 'https://docs.move-analyzer.dev',
+        stats: {
+            projectsUsing: 67,
+            weeklyDownloads: 8900,
+            stars: 340
+        },
+        ranking: 8,
+        trendingScore: 78,
+        projects: [
+            { name: 'DeepBook', category: 'DeFi' },
+            { name: 'Navi Protocol', category: 'DeFi' },
+            { name: 'Cetus', category: 'DeFi' }
+        ],
+        tags: ['static-analysis', 'linting', 'move', 'quality']
+    },
+    {
+        id: '9',
+        name: 'Switchboard',
+        description: 'Decentralized oracle network for custom data feeds and automation',
+        category: 'Oracle',
+        logo: '🔌',
+        website: 'https://switchboard.xyz',
+        github: 'https://github.com/switchboard-xyz',
+        docs: 'https://docs.switchboard.xyz',
+        stats: {
+            projectsUsing: 24,
+            totalTransactions: 890000,
+            stars: 290
+        },
+        ranking: 9,
+        trendingScore: 72,
+        projects: [
+            { name: 'Turbos', category: 'DeFi' },
+            { name: 'Kriya', category: 'DeFi' },
+            { name: 'Aftermath', category: 'DeFi' }
+        ],
+        tags: ['oracle', 'automation', 'data-feeds', 'decentralized']
+    },
+    {
+        id: '10',
+        name: 'Sui Explorer API',
+        description: 'Blockchain explorer and analytics API for Sui network data',
+        category: 'Infrastructure',
+        logo: '🔭',
+        website: 'https://suiexplorer.com',
+        github: 'https://github.com/MystenLabs/sui-explorer',
+        docs: 'https://docs.suiexplorer.com/api',
+        stats: {
+            projectsUsing: 89,
+            totalTransactions: 15000000,
+            stars: 450
+        },
+        ranking: 10,
+        trendingScore: 83,
+        projects: [
+            { name: 'SuiNS', category: 'Identity' },
+            { name: 'BlueMove', category: 'NFT' },
+            { name: 'Cetus', category: 'DeFi' },
+            { name: 'Navi Protocol', category: 'DeFi' }
+        ],
+        tags: ['explorer', 'analytics', 'api', 'data']
+    }
+];
+
+// Campaign Analytics Data
+export interface CampaignAnalytics {
+    topContributors: {
+        rank: number;
+        name: string;
+        avatar: string;
+        submissions: number;
+    }[];
+    techStack: {
+        name: string;
+        percentage: number;
+        color: string;
+    }[];
+    activityHeatmap: {
+        date: string;
+        count: number;
+    }[];
+    keyMetrics: {
+        totalSubmissions: number;
+        pullRequests: number;
+        issues: number;
+        activeProjects: number;
+    };
+    projectHealth: {
+        name: string;
+        lastActivity: string;
+        status: 'Active' | 'Moderate' | 'Inactive';
+        commits: number;
+        prs: number;
+        issues: number;
+        quality: number;
+    }[];
+    campaignHealth: {
+        overallScore: number;
+        qualityScore: number;
+    };
+}
+
+// Generate last 90 days of activity data
+const generateActivityHeatmap = () => {
+    const data = [];
+    const today = new Date();
+    for (let i = 89; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(date.getDate() - i);
+        const count = Math.floor(Math.random() * 15);
+        data.push({
+            date: date.toISOString().split('T')[0],
+            count
+        });
+    }
+    return data;
+};
+
+export const campaignAnalytics: CampaignAnalytics = {
+    topContributors: [
+        {
+            rank: 1,
+            name: 'devMaster99',
+            avatar: 'https://i.pravatar.cc/150?img=12',
+            submissions: 128
+        },
+        {
+            rank: 2,
+            name: 'JS_Ninja',
+            avatar: 'https://i.pravatar.cc/150?img=13',
+            submissions: 115
+        },
+        {
+            rank: 3,
+            name: 'CodeWizard',
+            avatar: 'https://i.pravatar.cc/150?img=14',
+            submissions: 98
+        },
+        {
+            rank: 4,
+            name: 'PythonPro',
+            avatar: 'https://i.pravatar.cc/150?img=15',
+            submissions: 85
+        },
+        {
+            rank: 5,
+            name: 'LunaDev',
+            avatar: 'https://i.pravatar.cc/150?img=16',
+            submissions: 73
+        }
+    ],
+    techStack: [
+        {
+            name: 'Move',
+            percentage: 35,
+            color: 'oklch(55% 0.22 300)' // Purple
+        },
+        {
+            name: 'TypeScript',
+            percentage: 25,
+            color: 'oklch(60% 0.15 240)' // Blue
+        },
+        {
+            name: 'Rust',
+            percentage: 15,
+            color: 'oklch(55% 0.18 30)' // Orange
+        },
+        {
+            name: 'Python',
+            percentage: 15,
+            color: 'oklch(60% 0.15 140)' // Green
+        },
+        {
+            name: 'Other',
+            percentage: 10,
+            color: 'oklch(50% 0.05 0)' // Gray
+        }
+    ],
+    activityHeatmap: generateActivityHeatmap(),
+    keyMetrics: {
+        totalSubmissions: 1248,
+        pullRequests: 312,
+        issues: 189,
+        activeProjects: 45
+    },
+    projectHealth: [
+        {
+            name: 'AlphaCode',
+            lastActivity: '1 day ago',
+            status: 'Active',
+            commits: 123,
+            prs: 177,
+            issues: 189,
+            quality: 95
+        },
+        {
+            name: 'PyTech',
+            lastActivity: '10 days ago',
+            status: 'Moderate',
+            commits: 73,
+            prs: 177,
+            issues: 189,
+            quality: 87
+        },
+        {
+            name: 'DevOpsMasters',
+            lastActivity: '21 days ago',
+            status: 'Moderate',
+            commits: 75,
+            prs: 142,
+            issues: 189,
+            quality: 76
+        },
+        {
+            name: 'RustyTools',
+            lastActivity: '42 days ago',
+            status: 'Inactive',
+            commits: 68,
+            prs: 125,
+            issues: 189,
+            quality: 56
+        },
+        {
+            name: 'GoHub',
+            lastActivity: '23 days ago',
+            status: 'Inactive',
+            commits: 321,
+            prs: 139,
+            issues: 109,
+            quality: 20
+        }
+    ],
+    campaignHealth: {
+        overallScore: 100,
+        qualityScore: 87
+    }
+};
+
