@@ -28,35 +28,40 @@ export function AppSidebar() {
     const location = useLocation();
 
     return (
-        <Sidebar collapsible="icon" className="bg-background/60 backdrop-blur-md border-r border-white/10">
-            <SidebarHeader className="h-16 border-b border-sidebar-border">
-                <div className="flex h-full items-center gap-2 px-2">
+        <Sidebar collapsible="icon" className="bg-background border-r-0">
+            <SidebarHeader className="h-16 border-b border-border/30 px-4">
+                <div className="flex h-full items-center gap-2">
                     <Link to="/" className="flex items-center gap-2">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-                            YC
-                        </div>
+                        <img
+                            src="/yapcoderlogo.png"
+                            alt="YapCoder"
+                            className="h-8 w-8 rounded-lg object-contain"
+                        />
                         <div className="grid flex-1 text-left text-sm leading-tight">
                             <span className="truncate font-semibold">YapCoder</span>
                             <span className="truncate text-xs text-muted-foreground">Unfiltered</span>
                         </div>
                     </Link>
                 </div>
-
             </SidebarHeader>
-            <SidebarContent>
+
+            <SidebarContent className="px-3 py-2">
                 <SidebarGroup>
-                    <SidebarGroupLabel>Platform</SidebarGroupLabel>
+                    <SidebarGroupLabel className="text-[10px] font-semibold tracking-widest text-muted-foreground/50 uppercase px-3 pt-4 pb-2">
+                        Platform
+                    </SidebarGroupLabel>
                     <SidebarGroupContent>
-                        <SidebarMenu>
+                        <SidebarMenu className="gap-0.5">
                             {navItems.map((item) => (
                                 <SidebarMenuItem key={item.name}>
                                     <SidebarMenuButton
                                         asChild
                                         isActive={location.pathname === item.href}
                                         tooltip={item.name}
+                                        className="h-9 px-3 data-[active=true]:bg-primary data-[active=true]:text-primary-foreground data-[active=true]:font-medium hover:bg-accent text-sm font-normal text-foreground/70 hover:text-foreground transition-all duration-150 rounded-md"
                                     >
-                                        <Link to={item.href}>
-                                            <item.icon />
+                                        <Link to={item.href} className="flex items-center gap-3">
+                                            <item.icon className="h-[18px] w-[18px] shrink-0" />
                                             <span>{item.name}</span>
                                         </Link>
                                     </SidebarMenuButton>
@@ -66,18 +71,21 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
+
+            <SidebarFooter className="p-3 border-t border-border/30">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                            <Link to="/dashboard/developers/YapCoderUser">
+                        <SidebarMenuButton size="lg" asChild className="hover:bg-accent rounded-lg px-2 py-1.5 h-auto">
+                            <Link to="/dashboard/developers/YapCoderUser" className="flex items-center gap-2">
                                 <Avatar className="h-8 w-8 rounded-lg">
-                                    <AvatarImage src="/avatars/01.png" alt="YapCoder User" />
-                                    <AvatarFallback className="rounded-lg">YP</AvatarFallback>
+                                    <AvatarImage src="/yapcoderlogo.png" alt="YapCoder User" />
+                                    <AvatarFallback className="rounded-lg bg-muted text-xs p-1">
+                                        <img src="/yapcoderlogo.png" alt="YC" className="h-full w-full object-contain" />
+                                    </AvatarFallback>
                                 </Avatar>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
-                                    <span className="truncate font-semibold">YapCoder User</span>
-                                    <span className="truncate text-xs text-muted-foreground">Pro Member</span>
+                                    <span className="truncate font-medium text-xs">YapCoder User</span>
+                                    <span className="truncate text-[10px] text-muted-foreground">Pro Member</span>
                                 </div>
                             </Link>
                         </SidebarMenuButton>
