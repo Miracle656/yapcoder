@@ -1,5 +1,5 @@
 
-import { MapPin, Trophy } from "lucide-react";
+import { Link } from "react-router-dom"; import { MapPin, Trophy } from "lucide-react";
 import { developers, contributions } from "@/data/mockData";
 import {
     Card,
@@ -46,26 +46,32 @@ export function Developers() {
                             </TableHeader>
                             <TableBody>
                                 {developers.map((dev) => (
-                                    <TableRow key={dev.handle}>
+                                    <TableRow key={dev.handle} className="cursor-pointer">
                                         <TableCell>
-                                            <Avatar>
-                                                <AvatarImage src={dev.avatar} alt={dev.name} />
-                                                <AvatarFallback>{dev.name.substring(0, 2)}</AvatarFallback>
-                                            </Avatar>
+                                            <Link to={`/dashboard/developers/${dev.handle}`} className="flex items-center">
+                                                <Avatar>
+                                                    <AvatarImage src={dev.avatar} alt={dev.name} />
+                                                    <AvatarFallback>{dev.name.substring(0, 2)}</AvatarFallback>
+                                                </Avatar>
+                                            </Link>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="flex flex-col">
+                                            <Link to={`/dashboard/developers/${dev.handle}`} className="flex flex-col">
                                                 <span className="font-medium">{dev.name}</span>
                                                 <span className="text-xs text-muted-foreground">{dev.handle}</span>
-                                            </div>
+                                            </Link>
                                         </TableCell>
                                         <TableCell className="text-right">
-                                            <div className="flex items-center justify-end gap-1">
+                                            <Link to={`/dashboard/developers/${dev.handle}`} className="flex items-center justify-end gap-1">
                                                 <Trophy className="h-3 w-3 text-yellow-500" />
                                                 {dev.reputation}
-                                            </div>
+                                            </Link>
                                         </TableCell>
-                                        <TableCell className="text-right">{dev.followers.toLocaleString()}</TableCell>
+                                        <TableCell className="text-right">
+                                            <Link to={`/dashboard/developers/${dev.handle}`}>
+                                                {dev.followers.toLocaleString()}
+                                            </Link>
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>

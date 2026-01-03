@@ -37,7 +37,7 @@ export function Campaigns() {
                         <CardDescription>Join these events to earn rewards and reputation.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
-                        <Link to="/campaigns/1">
+                        <Link to="/dashboard/campaigns/1">
                             <div className="flex items-center justify-between rounded-lg border p-4 hover:bg-accent transition-colors cursor-pointer">
                                 <div className="flex items-center gap-4">
                                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -51,7 +51,7 @@ export function Campaigns() {
                                 <Badge>Active</Badge>
                             </div>
                         </Link>
-                        <Link to="/campaigns/2">
+                        <Link to="/dashboard/campaigns/2">
                             <div className="flex items-center justify-between rounded-lg border p-4 hover:bg-accent transition-colors cursor-pointer">
                                 <div className="flex items-center gap-4">
                                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-500">
@@ -65,7 +65,7 @@ export function Campaigns() {
                                 <Badge variant="secondary">Register</Badge>
                             </div>
                         </Link>
-                        <Link to="/campaigns/3">
+                        <Link to="/dashboard/campaigns/3">
                             <div className="flex items-center justify-between rounded-lg border p-4 hover:bg-accent transition-colors cursor-pointer">
                                 <div className="flex items-center gap-4">
                                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/10 text-yellow-500">

@@ -17,11 +17,11 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navItems = [
-    { name: "Dashboard", href: "/", icon: LayoutDashboard },
-    { name: "Packages", href: "/packages", icon: Package },
-    { name: "Projects", href: "/projects", icon: FolderGit2 },
-    { name: "Developers", href: "/developers", icon: Users },
-    { name: "Campaigns", href: "/campaigns", icon: Trophy },
+    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Packages", href: "/dashboard/packages", icon: Package },
+    { name: "Projects", href: "/dashboard/projects", icon: FolderGit2 },
+    { name: "Developers", href: "/dashboard/developers", icon: Users },
+    { name: "Campaigns", href: "/dashboard/campaigns", icon: Trophy },
 ];
 
 export function AppSidebar() {
@@ -31,13 +31,15 @@ export function AppSidebar() {
         <Sidebar collapsible="icon">
             <SidebarHeader className="h-16 border-b border-sidebar-border">
                 <div className="flex h-full items-center gap-2 px-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-                        YC
-                    </div>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                        <span className="truncate font-semibold">YapCoder</span>
-                        <span className="truncate text-xs text-muted-foreground">Unfiltered</span>
-                    </div>
+                    <Link to="/" className="flex items-center gap-2">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
+                            YC
+                        </div>
+                        <div className="grid flex-1 text-left text-sm leading-tight">
+                            <span className="truncate font-semibold">YapCoder</span>
+                            <span className="truncate text-xs text-muted-foreground">Unfiltered</span>
+                        </div>
+                    </Link>
                 </div>
 
             </SidebarHeader>
@@ -65,16 +67,22 @@ export function AppSidebar() {
                 </SidebarGroup>
             </SidebarContent>
             <SidebarFooter>
-                <div className="flex items-center gap-2 px-2 py-1">
-                    <Avatar className="h-8 w-8 rounded-lg">
-                        <AvatarImage src="/avatars/01.png" alt="YapCoder User" />
-                        <AvatarFallback className="rounded-lg">YP</AvatarFallback>
-                    </Avatar>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                        <span className="truncate font-semibold">YapCoder User</span>
-                        <span className="truncate text-xs text-muted-foreground">Pro Member</span>
-                    </div>
-                </div>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton size="lg" asChild className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+                            <Link to="/dashboard/developers/YapCoderUser">
+                                <Avatar className="h-8 w-8 rounded-lg">
+                                    <AvatarImage src="/avatars/01.png" alt="YapCoder User" />
+                                    <AvatarFallback className="rounded-lg">YP</AvatarFallback>
+                                </Avatar>
+                                <div className="grid flex-1 text-left text-sm leading-tight">
+                                    <span className="truncate font-semibold">YapCoder User</span>
+                                    <span className="truncate text-xs text-muted-foreground">Pro Member</span>
+                                </div>
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarFooter>
             <SidebarRail />
         </Sidebar >
